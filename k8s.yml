@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: app-deployment
   labels:
-    app: service-aforo255
+    app: cursodevops
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: service-aforo255
+      app: cursodevops
   template:
     metadata:
       labels:
         app: service-aforo255
     spec:
       containers:
-      - name: service-aforo255
+      - name: cursodevops
         image: abocanegrab/cursodevops:latest
         ports:
         - containerPort: 80
@@ -28,7 +28,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: service-aforo255
+    app: cursodevops
   ports:
   - protocol: TCP
     port: 80
