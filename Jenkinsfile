@@ -1,39 +1,61 @@
 #!/usr/bin/env groovy
 // @Library(['shared-common@V2']) _
 
-  // The Step of the build layed out.
-  stages {
-    stage('Setup parameters') {
-        steps {
-            script { 
-                properties([ 
-                    parameters([
-                        string(
-                            name: 'ParentBuildVersion', 
-                            trim: true
-                        ),
-                        string(
-                            name: 'ParentBuildNumber', 
-                            trim: true
-                        ),
-                        string(
-                            name: 'DEPLOY_ENV', 
-                            trim: true
-                        )
-                    ])
-                ])
-                currentBuild.displayName = "#${params.ParentBuildNumber}"
-                env.BUILD_VERSION = params.ParentBuildVersion
-                env.DEPLOY_ENV = params.DEPLOY_ENV 
+pipeline {
+    agent any 
+    stages {
+        stage('Build') { 
+            steps {
+                sh '''dotnet restore ProjectTest.sln 
+//                 dotnet build ProjectTest.sln --configuration RELEASE'''
             }
         }
+        // stage('Test') { 
+        //     steps {
+        //         // 
+        //     }
+        // }
+        // stage('Deploy') { 
+        //     steps {
+        //         // 
+        //     }
+        // }
     }
-   stage ('Restore and Build') {
-        steps {
-            sh '''dotnet restore ProjectTest.sln 
-                dotnet build ProjectTest.sln --configuration RELEASE'''
-        }
-    }
+}
+
+  // The Step of the build layed out.
+//   stages {
+//     stage('Setup parameters') {
+//         steps {
+//             script { 
+//                 properties([ 
+//                     parameters([
+//                         string(
+//                             name: 'ParentBuildVersion', 
+//                             trim: true
+//                         ),
+//                         string(
+//                             name: 'ParentBuildNumber', 
+//                             trim: true
+//                         ),
+//                         string(
+//                             name: 'DEPLOY_ENV', 
+//                             trim: true
+//                         )
+//                     ])
+//                 ])
+//                 currentBuild.displayName = "#${params.ParentBuildNumber}"
+//                 env.BUILD_VERSION = params.ParentBuildVersion
+//                 env.DEPLOY_ENV = params.DEPLOY_ENV 
+//             }
+//         }
+//     }
+//    stage ('Restore and Build') {
+//         steps {
+//             sh '''dotnet restore ProjectTest.sln 
+//                 dotnet build ProjectTest.sln --configuration RELEASE'''
+//         }
+//     }
     // stage ('Unit Tests') {
     //     steps {
     //         container('dotnet-core') {
@@ -95,5 +117,5 @@
 	// 			}
   	// 		}
 	// 	}   
-    }
+    // }
 //}
