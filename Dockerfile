@@ -4,6 +4,9 @@ COPY . ./
 RUN dotnet restore
 
 COPY . ./
+RUN dotnet test
+
+COPY . ./
 RUN dotnet publish ProjectTest.API -c release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base

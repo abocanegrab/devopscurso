@@ -33,17 +33,17 @@ pipeline {
                 }
             }
         }
-        stage('Build') { 
-            steps {
-                 sh '''dotnet restore ${PROJECT_NAME} 
-                 dotnet build ${PROJECT_NAME} --configuration ${CONFIGURATION}'''
-            }
-        }
-        stage('Test') { 
-            steps {
-                sh 'dotnet test ${PROJECT_NAME}'
-            }
-        }
+        // stage('Build') { 
+        //     steps {
+        //          sh '''dotnet restore ${PROJECT_NAME} 
+        //          dotnet build ${PROJECT_NAME} --configuration ${CONFIGURATION}'''
+        //     }
+        // }
+        // stage('Test') { 
+        //     steps {
+        //         sh 'dotnet test ${PROJECT_NAME}'
+        //     }
+        // }
         stage('Generate Docker Image') {
             steps {
                 sh '''  docker login --username abocanegrab --password 2044r0n11
