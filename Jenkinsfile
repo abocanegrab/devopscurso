@@ -52,7 +52,6 @@ pipeline {
         }
     }
 }
-
   // The Step of the build layed out.
 //   stages {
 //     stage('Setup parameters') {
