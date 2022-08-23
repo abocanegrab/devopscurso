@@ -7,6 +7,31 @@ pipeline {
         PROJECT_NAME = 'ProjectTest.sln'
     }
     stages {
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([ 
+                        parameters([
+                            string(
+                                name: 'ParentBuildVersion', 
+                                trim: true
+                            ),
+                            string(
+                                name: 'ParentBuildNumber', 
+                                trim: true
+                            ),
+                            string(
+                                name: 'DEPLOY_ENV', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                    currentBuild.displayName = "#${params.ParentBuildNumber}"
+                    env.BUILD_VERSION = params.ParentBuildVersion
+                    env.DEPLOY_ENV = params.DEPLOY_ENV 
+                }
+            }
+        }
         stage('Build') { 
             steps {
                  sh '''dotnet restore ${PROJECT_NAME} 
@@ -18,11 +43,11 @@ pipeline {
                 sh 'dotnet test ${PROJECT_NAME}'
             }
         }
-        // stage('Deploy') { 
-        //     steps {
-        //         // 
-        //     }
-        // }
+        stage('Generate Docker Image') {
+            steps {
+                sh '''dotnet build ${PROJECT_NAME}.sln -r win-x64 --configuration ${CONFIGURATION} '''
+            } 
+        }
     }
 }
 
