@@ -36,7 +36,7 @@ pipeline {
         stage('Build') { 
             steps {
                  sh '''dotnet restore ${PROJECT_NAME} 
-                 dotnet build ${PROJECT_NAME} -r win-x64 --configuration ${CONFIGURATION}'''
+                 dotnet build ${PROJECT_NAME} --configuration ${CONFIGURATION}'''
             }
         }
         stage('Test') { 
