@@ -12,8 +12,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                sh '''dotnet test ProjectTest.Tests/ProjectTest.Tests.sln 
-                 dotnet build ProjectTest.sln --configuration RELEASE'''
+                sh 'dotnet test ProjectTest.sln'
             }
         }
         // stage('Deploy') { 

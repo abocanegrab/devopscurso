@@ -18,3 +18,24 @@ C:\Users\Ivan Cuadros\Desktop\ProjectTest\ProjectTest.API\obj\Debug\net6.0\Proje
 C:\Users\Ivan Cuadros\Desktop\ProjectTest\ProjectTest.API\obj\Debug\net6.0\ref\ProjectTest.API.dll
 C:\Users\Ivan Cuadros\Desktop\ProjectTest\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.pdb
 C:\Users\Ivan Cuadros\Desktop\ProjectTest\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.genruntimeconfig.cache
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\appsettings.Development.json
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\appsettings.json
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\ProjectTest.API.exe
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\ProjectTest.API.deps.json
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\ProjectTest.API.runtimeconfig.json
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\ProjectTest.API.dll
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\ref\ProjectTest.API.dll
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\bin\Debug\net6.0\ProjectTest.API.pdb
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.csproj.AssemblyReference.cache
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.AssemblyInfoInputs.cache
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.AssemblyInfo.cs
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.csproj.CoreCompileInputs.cache
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.MvcApplicationPartsAssemblyInfo.cache
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\staticwebassets.build.json
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\staticwebassets.development.json
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\scopedcss\bundle\ProjectTest.API.styles.css
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.dll
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ref\ProjectTest.API.dll
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.pdb
+D:\Cursos\DevOpsPractico\devopscurso\ProjectTest.API\obj\Debug\net6.0\ProjectTest.API.genruntimeconfig.cache
