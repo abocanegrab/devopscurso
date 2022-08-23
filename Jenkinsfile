@@ -5,6 +5,7 @@ pipeline {
     agent any 
     environment {
         PROJECT_NAME = 'ProjectTest.sln'
+        CONFIGURATION = 'RELEASE'
     }
     stages {
         stage('Setup parameters') {
@@ -35,7 +36,7 @@ pipeline {
         stage('Build') { 
             steps {
                  sh '''dotnet restore ${PROJECT_NAME} 
-                 dotnet build ${PROJECT_NAME} --configuration RELEASE'''
+                 dotnet build ${PROJECT_NAME} -r win-x64 --configuration ${CONFIGURATION}'''
             }
         }
         stage('Test') { 
@@ -45,7 +46,8 @@ pipeline {
         }
         stage('Generate Docker Image') {
             steps {
-                sh '''dotnet build ${PROJECT_NAME}.sln -r win-x64 --configuration ${CONFIGURATION} '''
+                sh '''  docker login --username abocanegrab --password 2044r0n11
+                        docker build -t abocanegrab/cursodevops . '''
             } 
         }
     }
