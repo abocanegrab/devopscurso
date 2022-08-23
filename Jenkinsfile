@@ -8,15 +8,14 @@ pipeline {
             steps {
                  sh '''dotnet restore ProjectTest.sln 
                  dotnet build ProjectTest.sln --configuration RELEASE'''
-//                 sh '''dotnet restore ProjectTest.sln 
-// //                 dotnet build ProjectTest.sln --configuration RELEASE'''
             }
         }
-        // stage('Test') { 
-        //     steps {
-        //         // 
-        //     }
-        // }
+        stage('Test') { 
+            steps {
+                sh '''dotnet test ProjectTest.Tests/ProjectTest.Tests.sln 
+                 dotnet build ProjectTest.sln --configuration RELEASE'''
+            }
+        }
         // stage('Deploy') { 
         //     steps {
         //         // 
