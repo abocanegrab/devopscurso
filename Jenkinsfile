@@ -1,12 +1,11 @@
 pipeline {
-    environment {
-        PROJECT = "Devops Curso"
-    }
-    options {
-        buildDiscarder(logRotator(numToKeepStr: '25')) // We need to Keep track of these builds
-    }
+    // environment {
+    //     PROJECT = "Devops Curso"
+    // }
+    // options {
+    //     buildDiscarder(logRotator(numToKeepStr: '25')) // We need to Keep track of these builds
+    // }
 
-  // The Step of the build layed out.
     stages {
         stage('Select Version'){
             steps{
