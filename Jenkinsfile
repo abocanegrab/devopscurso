@@ -1,34 +1,54 @@
-#!/usr/bin/env groovy
-// @Library(['shared-common@V2']) _
-
 pipeline {
-    agent any 
     environment {
-        PROJECT_NAME = 'ProjectTest.sln'
-        CONFIGURATION = 'RELEASE'
+        PROJECT = "Devops Curso"
     }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '25')) // We need to Keep track of these builds
+    }
+
+  // The Step of the build layed out.
     stages {
-        // stage('Build') { 
-        //     steps {
-        //          sh '''dotnet restore ${PROJECT_NAME} 
-        //          dotnet build ${PROJECT_NAME} --configuration ${CONFIGURATION}'''
-        //     }
-        // }
-        // stage('Test') { 
-        //     steps {
-        //         sh 'dotnet test ${PROJECT_NAME}'
-        //     }
-        // }
-        stage('Generate Docker Image') {
-            steps {
-                sh '''  docker login --username abocanegrab --password 2044r0n11
-                        docker build -t abocanegrab/cursodevops . '''
-            } 
+        stage('Select Version'){
+            steps{
+                script{
+                    switch(GIT_BRANCH) {
+                        case "develop":
+                            env.BUILD_VERSION = "1.0.${BUILD_NUMBER}-dev"
+                            env.DEPLOY_ENV = "Development"
+                            env.CREATE_RELEASE = false  
+                            break
+                        case "release":
+                            env.BUILD_VERSION = "1.0.${BUILD_NUMBER}-uat"
+                            env.DEPLOY_ENV = "UAT"
+                            env.CREATE_RELEASE = false   
+                            break
+                        case "master":
+                            env.BUILD_VERSION = "1.0.${BUILD_NUMBER}-master"
+                            env.DEPLOY_ENV = "Production"        
+                            env.CREATE_RELEASE = true        
+                            break
+                        default:
+                            env.BUILD_VERSION = ""
+                            env.DEPLOY_ENV = ""
+                            env.CREATE_RELEASE = false  
+                    }
+                    println(env.BUILD_VERSION)
+                    println(env.DEPLOY_ENV)
+                    println( env.CREATE_RELEASE)
+                }
+            }
         }
-        stage('Push Docker Image') {
-            steps {
-                sh '''docker push abocanegrab/cursodevops '''
-            } 
+        stage ('Inicia Construccion segun check-in') {
+            parallel {
+                stage('Inicia Devops Microservicio'){
+
+                    when {  changeset '**/MicroService/**'  }
+                    steps {
+                        build job: "CursoDevOps/CI-ServiceNet60-DEVMultiBranch/${env.BRANCH_NAME}",  propagate: true, wait: true, parameters: [[$class: 'StringParameterValue', name: 'ParentBuildVersion', value: String.valueOf(BUILD_VERSION)], [$class: 'StringParameterValue', name: 'ParentBuildNumber', value: String.valueOf(BUILD_NUMBER)], [$class: 'StringParameterValue', name: 'DEPLOY_ENV', value: String.valueOf(env.DEPLOY_ENV)]]
+
+                    }
+                }
+            }
         }
-    }
+   }
 }
