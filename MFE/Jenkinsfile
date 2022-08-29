@@ -1,0 +1,42 @@
+// #!/usr/bin/env groovy
+// @Library(['shared-common@V2']) _
+
+pipeline {
+    agent any 
+    environment {
+        PROJECT_NAME = 'ProjectTest.sln'
+        CONFIGURATION = 'RELEASE'
+    }
+    stages {
+        stage('Setup parameters') {
+            steps {
+                script { 
+                    properties([ 
+                        parameters([
+                            string(
+                                name: 'ParentBuildVersion', 
+                                trim: true
+                            ),
+                            string(
+                                name: 'ParentBuildNumber', 
+                                trim: true
+                            ),
+                            string(
+                                name: 'DEPLOY_ENV', 
+                                trim: true
+                            )
+                        ])
+                    ])
+                    currentBuild.displayName = "#${params.ParentBuildNumber}"
+                    env.BUILD_VERSION = params.ParentBuildVersion
+                    env.DEPLOY_ENV = params.DEPLOY_ENV 
+                }
+            }
+        }
+        stage('Genera pipe en Jenkins') {
+            steps {
+                sh 'echo BUILD_VERSION'
+            } 
+        }
+    }
+}

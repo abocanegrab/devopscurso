@@ -48,6 +48,14 @@ pipeline {
 
                     }
                 }
+                stage('Inicia Devops MFE'){
+
+                    when {  changeset '**/MFE/**'  }
+                    steps {
+                        build job: "CursoDevOps/CI-ServiceNet60-FrontEnd/${env.BRANCH_NAME}",  propagate: true, wait: true, parameters: [[$class: 'StringParameterValue', name: 'ParentBuildVersion', value: String.valueOf(BUILD_VERSION)], [$class: 'StringParameterValue', name: 'ParentBuildNumber', value: String.valueOf(BUILD_NUMBER)], [$class: 'StringParameterValue', name: 'DEPLOY_ENV', value: String.valueOf(env.DEPLOY_ENV)]]
+
+                    }
+                }
             }
         }
    }
