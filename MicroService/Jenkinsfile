@@ -22,7 +22,7 @@ pipeline {
         stage('Generate Docker Image') {
             steps {
                 sh '''  docker login --username abocanegrab --password 2044r0n11
-                        docker build -t abocanegrab/cursodevops . '''
+                        docker build /Microservice -t abocanegrab/cursodevops . '''
             } 
         }
         stage('Push Docker Image') {
