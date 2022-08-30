@@ -10,7 +10,7 @@ var app = builder.Build();
 app.MapGet("/", () =>
 {
     app.Logger.LogInformation("Initial Home Get");
-    return "Prueba aaron 2";
+    return "Prueba aaron 3";
 });
 
 app.MapPost("/", () =>
