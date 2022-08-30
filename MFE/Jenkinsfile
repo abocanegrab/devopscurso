@@ -1,12 +1,5 @@
-// #!/usr/bin/env groovy
-// @Library(['shared-common@V2']) _
-
 pipeline {
     agent any 
-    environment {
-        PROJECT_NAME = 'ProjectTest.sln'
-        CONFIGURATION = 'RELEASE'
-    }
     stages {
         stage('Setup parameters') {
             steps {
